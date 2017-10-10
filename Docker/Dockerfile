@@ -12,7 +12,7 @@
 #
 FROM airdock/oracle-jdk:1.8
 MAINTAINER eMoflon developers (https://emoflong.github.io)
-RUN apt-get --yes install maven git
+RUN apt-get --yes install maven git-core
 # The following commands are there for prefetching Maven resources to speed up later builds
 RUN git clone https://github.com/eMoflon/emoflon-core.git
 RUN cd emoflon-core

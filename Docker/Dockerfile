@@ -10,9 +10,8 @@
 # docker run -i -t emoflon/emoflon-ci /bin/bash
 # git clone https://github.com/eMoflon/emoflon-core.git && cd emoflon-core && mvn clean install
 #
-FROM airdock/oracle-jdk:1.8
-MAINTAINER eMoflon developers (https://emoflong.github.io)
-RUN apt-get --yes install maven git-core
+FROM tomsontom/oracle-java8-mvn:latest
+MAINTAINER eMoflon developers <contact@emoflon.org>
 # The following commands are there for prefetching Maven resources to speed up later builds
 RUN git clone https://github.com/eMoflon/emoflon-core.git
 RUN cd emoflon-core

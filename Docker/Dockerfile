@@ -16,5 +16,4 @@ MAINTAINER eMoflon developers <contact@emoflon.org>
 RUN apt-get update
 RUN apt-get install --yes git
 RUN git clone https://github.com/eMoflon/emoflon-core.git
-RUN cd emoflon-core
-RUN mvn clean install
+RUN mvn -f emoflon-core/pom.xml clean install

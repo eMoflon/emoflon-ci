@@ -1,0 +1,28 @@
+# ADJUST this property
+# Use relative path to avoid problems with different path formats!
+JAVA_HOME := ../../../../../../../../../Program\ Files/Java/jdk1.8.0_131/
+
+# ADJUST this property
+# Use relative path to avoid problems with different path formats!
+DEPLOYMENT_DIRECTORY := ../../emoflon-core/org.moflon.core.releng.updatesite/
+# DEPLOYMENT_DIRECTORY := ../../emoflon-tool/org.moflon.deployment.updatesite/
+
+# ADJUST this property
+KEYSTORE_PASSWORD := [ADJUST_PASSWORD_FOR_EMOFLON_STORE]
+
+# =============================================================================
+# All properties below this line should be left unchanged
+# ===
+
+JAR_SIGNER := $(JAVA_HOME)/bin/jarsigner
+
+KEYTOOL := $(JAVA_HOME)/bin/keytool
+
+KEYSTORE_LOCATION := eMoflon.keystore
+
+KEYSTORE_ALIAS := eMoflon
+
+TIMESTAMP_SERVER_URL := http://timestamp.comodoca.com/rfc3161
+
+
+

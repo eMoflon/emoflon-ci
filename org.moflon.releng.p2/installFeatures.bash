@@ -30,4 +30,11 @@ $ECLIPSE_HOME/eclipse \
   -application org.eclipse.equinox.p2.director \
   -installIU $installableUnits
 
+read -p "Open Eclipse now? [y/N] " -i "N" -e shallOpenEclipse
+
+if [ "$shallOpenEclipse" == "y" ];
+then
+    $ECLIPSE_HOME/eclipse
+fi
+
 echo "Bye bye."

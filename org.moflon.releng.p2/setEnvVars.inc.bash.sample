@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# ECLIPSE_HOME points to a directory containing an Eclipse installation (i.e, there should be an eclipse application inside)
+export ECLIPSE_HOME=""
+
+# LOCAL_UPDATE_SITES is a comma-separated list of URLs of (local) update sites.
+# The list shall not contain any whitespaces.
+# The list must contain at least one entry.
+# The URLS typically start with 'file:/c:/Users/...' (on Windows) or 'file:/home/...' (on Linux)
+export LOCAL_UPDATE_SITES=""

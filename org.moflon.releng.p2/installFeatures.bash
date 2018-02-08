@@ -12,7 +12,7 @@ for installableUnit in \
 org.moflon.core.feature \
 org.moflon.ide.feature \
 org.moflon.tgg.mosl.feature \
-org.moflon.ide.visualization.feature \
+#org.moflon.ide.visualization.feature \
 # org.moflon.gt.mosl.pattern.language.feature \
 # org.moflon.gt.mosl.controlflow.language.feature
 do
@@ -30,11 +30,12 @@ $ECLIPSE_HOME/eclipse \
   -application org.eclipse.equinox.p2.director \
   -installIU $installableUnits
 
-read -p "Open Eclipse now? [y/N] " -i "N" -e shallOpenEclipse
+defaultAnswer="Y"
+read -p "Open Eclipse now? [$defaultAnswer/n] " -i "$defaultAnswer" -e shallOpenEclipse
 
-if [ "$shallOpenEclipse" == "y" ];
+if [ "$shallOpenEclipse" == "$defaultAnswer" ];
 then
-    $ECLIPSE_HOME/eclipse
+    $ECLIPSE_HOME/eclipse &
 fi
 
 echo "Bye bye."

@@ -13,8 +13,8 @@ source common.inc.bash
 
 
 echo "Collecting features to be uninstalled"
-installedIUsTmpFile="installableUnitsList.tmp"
-$ECLIPSE_HOME/eclipse -noSplash -application org.eclipse.equinox.p2.director -listInstalledRoots > $installedIUsTmpFile
+installedIUsTmpFile=$(mktemp)
+./listInstalledFeatures.bash > $installedIUsTmpFile
 
 listOfFeaturesToBeUninstalled=""
 # Insert into the list all feature IDs as you find them in the feature.xml files

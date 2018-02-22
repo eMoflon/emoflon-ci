@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install --yes git
 RUN mkdir -p /opt/
 ADD http://ftp.fau.de/eclipse/technology/epp/downloads/release/oxygen/1/eclipse-modeling-oxygen-1-linux-gtk-x86_64.tar.gz /opt
 ENV ECLIPSE_HOME=/opt/eclipse
+ls -la ${ECLIPSE_HOME}
 RUN [ -d ${ECLIPSE_HOME}/plugins ] || exit 1 # Verify Eclipse home
 
 ADD https://github.com/seeq12/eclipse-import-projects-plugin/raw/master/jar/com.seeq.eclipse.importprojects_1.4.0.jar ${ECLIPSE_HOME}/plugins/

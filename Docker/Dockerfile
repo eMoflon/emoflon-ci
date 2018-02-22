@@ -1,6 +1,8 @@
 FROM tomsontom/oracle-java8-mvn:latest
 MAINTAINER eMoflon developers <contact@emoflon.org>
 
+SHELL ["/bin/bash", "-c"] 
+
 # Install utilities
 RUN apt-get update && apt-get install --yes git
 

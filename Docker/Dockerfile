@@ -4,7 +4,7 @@ MAINTAINER eMoflon developers <contact@emoflon.org>
 SHELL ["/bin/bash", "-c"] 
 
 # Install utilities
-RUN apt-get update && apt-get install --yes git
+RUN apt-get update && apt-get install --yes --no-install-recommends xvfb git
 
 # Download Eclipse
 ARG eclipseDownloadFile=/opt/eclipse-modeling-oxygen-1-linux-gtk-x86_64.tar.gz
@@ -23,11 +23,8 @@ RUN git clone https://github.com/eMoflon/emoflon-core.git
 # We create an Eclipse workspace rooted at ./emoflon-core, import all projects that can be found in the repo, and finally build all projects
 ARG workspacePath=./emoflon-core
 ARG repositoryRoot=./emoflon-core
-ARG allRepositories=http://files.idi.ntnu.no/publish/plantuml/repository/,http://download.eclipse.org/releases/oxygen/,http://emoflon.org/updatesites/emoflon-core/updatesite/
+ARG allRepositories=http://files.idi.ntnu.no/publish/plantuml/repository/,http://download.eclipse.org/releases/oxygen/,http://emoflon.org/emoflon-core-updatesite/stable/updatesite/
 RUN $ECLIPSE_HOME/eclipse -nosplash -application org.eclipse.equinox.p2.director -repository $allRepositories -installIU org.moflon.core.feature.feature.group
-#RUN $ECLIPSE_HOME/eclipse -nosplash -application org.eclipse.jdt.apt.core.aptBuild -data $workspacePath
-#RUN $ECLIPSE_HOME/eclipse -nosplash -application com.seeq.eclipse.importprojects.headlessimport -data $workspacePath -import $repositoryRoot
-#RUN $ECLIPSE_HOME/eclipse -nosplash -application org.eclipse.jdt.apt.core.aptBuild -data $workspacePath
 
-# Invoke Tycho. Ignore failure. We just want to cache the dependencies
-RUN (cd emoflon-core; mvn clean install; exit 0)
+# Run CI workflow once.
+RUN (cd emoflon-core; bash shippable.bash; exit 0)

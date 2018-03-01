@@ -1,6 +1,9 @@
 #!/bin/bash
 
-docker run -i -t emoflon/emoflon-ci /bin/bash
-echo "Test procedure:
-git clone https://github.com/eMoflon/emoflon-core.git && cd emoflon-core && mvn clean install
+echo "
+#Run the CI workflow inside the Docker container as follows:
+cd emoflon-core
+bash ./shippable.bash
 "
+docker run -i -t emoflon/emoflon-ci /bin/bash
+

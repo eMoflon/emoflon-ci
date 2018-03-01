@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t emoflon-ci .
+docker build -t emoflon-ci $@ .
 

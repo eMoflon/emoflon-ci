@@ -26,5 +26,5 @@ ARG repositoryRoot=./emoflon-core
 ARG allRepositories=http://files.idi.ntnu.no/publish/plantuml/repository/,http://download.eclipse.org/releases/oxygen/,http://emoflon.org/emoflon-core-updatesite/stable/updatesite/
 RUN $ECLIPSE_HOME/eclipse -nosplash -application org.eclipse.equinox.p2.director -repository $allRepositories -installIU org.moflon.core.feature.feature.group
 
-# Run CI workflow once.
-RUN (cd emoflon-core; bash shippable.bash; exit 0)
+# Prefetch Maven dependencies
+RUN (cd emoflon-core; mvn clean install integration-test; exit 0)

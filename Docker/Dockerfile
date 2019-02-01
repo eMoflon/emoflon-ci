@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install --yes --no-install-recommends xvfb git
 # Download Eclipse
 ARG eclipseDownloadFile=/opt/eclipse.tar.gz
 
-#ARG eclipseDownloadUrl=http://ftp.fau.de/eclipse/technology/epp/downloads/release/oxygen/1/eclipse-modeling-oxygen-1-linux-gtk-x86_64.tar.gz
-ARG eclipseDownloadUrl=http://mirror.nbtelecom.com.br/eclipse/technology/epp/downloads/release/2018-12/R/eclipse-modeling-2018-12-R-linux-gtk-x86_64.tar.gz
+ARG eclipseDownloadUrl=http://ftp.fau.de/eclipse/technology/epp/downloads/release/oxygen/1/eclipse-modeling-oxygen-1-linux-gtk-x86_64.tar.gz
+#ARG eclipseDownloadUrl=http://mirror.nbtelecom.com.br/eclipse/technology/epp/downloads/release/2018-12/R/eclipse-modeling-2018-12-R-linux-gtk-x86_64.tar.gz
 
 RUN mkdir -p /opt/
 RUN wget -O $eclipseDownloadFile -nv $eclipseDownloadUrl

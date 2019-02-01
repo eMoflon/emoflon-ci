@@ -28,7 +28,7 @@ RUN git clone https://github.com/eMoflon/emoflon-core.git
 # We create an Eclipse workspace rooted at ./emoflon-core, import all projects that can be found in the repo, and finally build all projects
 ARG workspacePath=./emoflon-core
 ARG repositoryRoot=./emoflon-core
-ARG allRepositories=https://emoflon.org/emoflon-tie-gt-updatesite/
+ARG allRepositories=https://hallvard.github.io/plantuml/,http://download.eclipse.org/releases/oxygen/,http://emoflon.org/emoflon-core-updatesite/stable/updatesite/
 RUN $ECLIPSE_HOME/eclipse -nosplash -application org.eclipse.equinox.p2.director -repository $allRepositories -installIU org.moflon.core.feature.feature.group
 
 # Prefetch Maven dependencies

@@ -18,17 +18,16 @@ RUN tar -C /opt -xzf $eclipseDownloadFile
 ENV ECLIPSE_HOME=/opt/eclipse
 RUN [ -d $ECLIPSE_HOME/plugins ] || exit 1
 
+# The following plugin allows to import all Eclipse projects in a given directory
 ARG importProjectsDownloadUrl=https://github.com/seeq12/eclipse-import-projects-plugin/raw/master/jar/com.seeq.eclipse.importprojects_1.4.0.jar
-RUN wget -O ${ECLIPSE_HOME}/plugins/com.seeq.eclipse.importprojects_1.4.0.jar -nv $importProjectsDownloadUrl
+ARG importProjectsDownloadFile=${ECLIPSE_HOME}/plugins/com.seeq.eclipse.importprojects_1.4.0.jar
+RUN wget -O $importProjectsDownloadFile -nv $importProjectsDownloadUrl
 
 # The following prefetch Maven resources to speed up subsequent builds
 RUN git clone https://github.com/eMoflon/emoflon-core.git
 
-# Build projects with Eclipse to trigger code generation
-# We create an Eclipse workspace rooted at ./emoflon-core, import all projects that can be found in the repo, and finally build all projects
-ARG workspacePath=./emoflon-core
-ARG repositoryRoot=./emoflon-core
-ARG allRepositories=https://hallvard.github.io/plantuml/,http://download.eclipse.org/releases/oxygen/,http://emoflon.org/emoflon-core-updatesite/stable/updatesite/
+# Install emoflon-core to trigger resolution of dependencies
+ARG allRepositories=https://hallvard.github.io/plantuml/,http://download.eclipse.org/releases/oxygen/,http://emoflon.org/emoflon-core-updatesite/stable/updatesite/,https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.14.0/
 RUN $ECLIPSE_HOME/eclipse -nosplash -application org.eclipse.equinox.p2.director -repository $allRepositories -installIU org.moflon.core.feature.feature.group
 
 # Prefetch Maven dependencies
